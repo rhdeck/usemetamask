@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./lib/", // path to output directory
+    "sourceMap": true, // allow sourcemap support
+    "strict": true, // enable strict null checks as a best practice
+    "module": "commonjs", // specify module code generation
+    "target": "es2019", // specify ECMAScript target version
+    "allowJs": true, // allow a partial TypeScript and JavaScript codebase,
+    "declaration": true,
+    "declarationDir": "./lib",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "noEmitOnError": true
+  },
+
+  "include": ["./src/"]
+}
