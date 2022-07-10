@@ -209,10 +209,10 @@
     recursive-copy "^2.0.10"
     untildify "^4.0.0"
 
-"@raydeck/metamask-ts@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@raydeck/metamask-ts/-/metamask-ts-1.0.1.tgz#f80001c376f276d4458f62d9fb6ebdad5d32a7f7"
-  integrity sha512-2ufgEnRLIlZ6y+xSyaz4e8ZyRVaUzyysJ9OVsdZjNeF2czPdw4cvxL32FnHTpHdMVvx2M81TUEJuqp/gFtkLmA==
+"@raydeck/metamask-ts@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@raydeck/metamask-ts/-/metamask-ts-1.0.2.tgz#317417ca27819bfa2dda1b1975a0a14497d0189b"
+  integrity sha512-kyLsk4LXo87oooI7Bv1iuzV9ugtZ0gDfCr4NixkJPmPS7MVj7NzBjdQehLO7J7dM9WFMOj2MWRJgVAkwGJ4LSg==
   dependencies:
     commander "^6.2.1"
     inquirer "^7.3.3"

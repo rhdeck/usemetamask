@@ -45,7 +45,9 @@ export const useAccounts = () => {
   const [accounts, setAccounts] = useState<string[]>([]);
   useEffect(() => {
     (async () => {
+      console.log("Getting accounts");
       setAccounts(await eth_accounts());
+      console.log("Got accounts");
     })();
   }, []);
   useEffect(() => {

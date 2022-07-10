@@ -50,7 +50,7 @@
     "lib"
   ],
   "dependencies": {
-    "@raydeck/metamask-ts": "^1.0.1",
+    "@raydeck/metamask-ts": "^1.0.2",
     "commander": "^6.2.1",
     "inquirer": "^7.3.3"
   },
