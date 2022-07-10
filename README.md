@@ -16,6 +16,7 @@ React Components and hooks for interacting with metamask. Built with [metamask-t
 
 - [MetamaskConnected](#metamaskconnected)
 - [MetamaskDisconnected](#metamaskdisconnected)
+- [MetamaskNotInstalled](#metamasknotinstalled)
 - [MetamaskProvider](#metamaskprovider)
 - [useAccounts](#useaccounts)
 - [useChainId](#usechainid)
@@ -56,6 +57,24 @@ ___
 | `props.chainId?` | `string` |
 | `props.children` | `ReactNode` |
 | `props.connected?` | `ReactNode` |
+| `context?` | `any` |
+
+#### Returns
+
+``null`` \| `ReactElement`<`any`, `any`\>
+
+___
+
+### MetamaskNotInstalled
+
+▸ **MetamaskNotInstalled**(`props`, `context?`): ``null`` \| `ReactElement`<`any`, `any`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `props` | `Object` |
+| `props.children` | `ReactNode` |
 | `context?` | `any` |
 
 #### Returns
