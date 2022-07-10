@@ -6,9 +6,9 @@ React Components and hooks for interacting with metamask. Built with [metamask-t
 
 <a name="_librarymd"></a>
 
-@raydeck/usemetamask - v1.0.1
+@raydeck/usemetamask - v1.0.2
 
-# @raydeck/usemetamask - v1.0.1
+# @raydeck/usemetamask - v1.0.2
 
 ## Table of contents
 
