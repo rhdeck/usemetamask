@@ -6,39 +6,70 @@ import {
   onAccountsChanged,
   onMessage,
   ProviderMessage,
+  eth_chainId,
+  eth_accounts,
 } from "@raydeck/metamask-ts";
-
 export const useConnected = () => {
   const [connected, setConnected] = useState(false);
-  const removeOnConnect = useMemo(() => {
-    return onConnect(() => setConnected(true));
-  }, []);
-  const removeOnDisconnect = useMemo(() => {
-    return onDisconnect(() => setConnected(false));
-  }, []);
   useEffect(() => {
+    const remove = onConnect(() => {
+      console.log("Saw connect event");
+      setConnected(true);
+    });
+    const remove2 = onDisconnect(() => {
+      console.log("Saw disconnect event");
+      setConnected(false);
+    });
     return () => {
-      removeOnConnect();
-      removeOnDisconnect();
+      remove();
+      remove2();
     };
-  }, [removeOnConnect, removeOnDisconnect]);
+  }, []);
   return connected;
 };
 export const useChainId = () => {
   const [chainId, setChainId] = useState("0x" + new Number(0).toString(16));
-  onChainChanged((chainId) => setChainId(chainId));
+  useEffect(() => {
+    (async () => {
+      const _chainId = await eth_chainId();
+      setChainId(_chainId);
+    })();
+  }, []);
+  useEffect(() => {
+    const remove = onChainChanged((chainId) => setChainId(chainId));
+    return () => remove();
+  }, []);
   return chainId;
 };
 export const useAccounts = () => {
   const [accounts, setAccounts] = useState<string[]>([]);
-  onAccountsChanged((accounts) => setAccounts(accounts));
+  useEffect(() => {
+    (async () => {
+      setAccounts(await eth_accounts());
+    })();
+  }, []);
+  useEffect(() => {
+    const remove = onAccountsChanged((accounts) => {
+      console.log("I have new accounts", accounts);
+      setAccounts(accounts);
+    });
+    return () => remove();
+  }, []);
   return accounts;
 };
+export const useAccount = () => {
+  const accounts = useAccounts();
+  return useMemo(() => (accounts.length ? accounts[0] : ""), [accounts]);
+};
+
 export const useMessage = () => {
   const [message, setMessage] = useState<ProviderMessage>({
     data: null,
     type: "",
   });
-  onMessage((message) => setMessage(message));
+  useEffect(() => {
+    const remove = onMessage((message) => setMessage(message));
+    return () => remove();
+  }, []);
   return message;
 };
