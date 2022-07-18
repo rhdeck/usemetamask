@@ -3,7 +3,15 @@ import { FC, createContext, useMemo, ReactNode, Fragment } from "react";
 import { useConnected, useChainId, useAccounts } from "./hooks";
 const context = createContext({});
 const { Provider } = context;
-
+/**
+ * Provider for Connected or Disconnected state
+ * @name MetamaskProvider
+ * @description Provider for the `useConnected` hook
+ * @param {ReactNode} children
+ * @returns {ReactNode}
+ * @category Components
+ * @export
+ */
 export const MetamaskProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const connected = useConnected();
   const thisChainId = useChainId();
@@ -13,21 +21,65 @@ export const MetamaskProvider: FC<{ children: ReactNode }> = ({ children }) => {
   );
   return <Provider value={value}>{connected && <>{children}</>}</Provider>;
 };
-
+/**
+ * Container for components to render when we are connected to a valid chain
+ * @name MetamaskConnected
+ * @description Renders if the connected state is true and we are on a valid chain
+ * @returns {ReactNode}
+ * @category Components
+ * @export
+ */
 export const MetamaskConnected: FC<{
-  chainId?: string;
+  chainIds?: string[];
   children: ReactNode;
   unconnected?: ReactNode;
-}> = ({ chainId, children, unconnected }) => {
+}> = ({ chainIds, children, unconnected }) => {
   // const connected = useConnected();
   const thisChainId = useChainId();
   const accounts = useAccounts();
-  if (accounts && accounts.length && (!chainId || thisChainId === chainId)) {
+  if (
+    accounts &&
+    accounts.length &&
+    (!chainIds || chainIds.includes(thisChainId))
+  ) {
     return <Fragment>{children}</Fragment>;
   } else {
     return <Fragment>{unconnected}</Fragment> || null;
   }
 };
+/**
+ * @name MetamaskWrongChain
+ * @description Renders if the connected state is true and we are not on a valid chain
+ * @returns {ReactNode}
+ * @category Components
+ * @export
+ */
+export const MetamaskWrongChain: FC<{
+  chainIds?: string[];
+  children: ReactNode;
+  unconnected?: ReactNode;
+}> = ({ chainIds, children, unconnected }) => {
+  // const connected = useConnected();
+  const thisChainId = useChainId();
+  const accounts = useAccounts();
+  if (
+    accounts &&
+    accounts.length &&
+    chainIds &&
+    !chainIds.includes(thisChainId)
+  ) {
+    return <Fragment>{children}</Fragment>;
+  } else {
+    return <Fragment>{unconnected}</Fragment> || null;
+  }
+};
+/**
+ * @name MetamaskUnconnected
+ * @description Renders if the connected state is false
+ * @returns {ReactNode}
+ * @category Components
+ * @export
+ */
 export const MetamaskDisconnected: FC<{
   chainId?: string;
   children: ReactNode;
@@ -48,6 +100,13 @@ export const MetamaskDisconnected: FC<{
     return <Fragment>{connected}</Fragment> || null;
   }
 };
+/**
+ * @name MetamaskNotInstalled
+ * @description Renders if there is no ethereum member of window
+ * @returns {ReactNode}
+ * @category Components
+ * @export
+ */
 export const MetamaskNotInstalled: FC<{ children: ReactNode }> = ({
   children,
 }) => {

@@ -1,7 +1,7 @@
 
 <a name="readmemd"></a>
 
-# usemetamask
+# @raydeck/usemetamask
 React Components and hooks for interacting with metamask. Built with [metamask-ts](https://npmjs.com/package/@raydeck/metamask-ts)
 
 <a name="_librarymd"></a>
@@ -12,19 +12,160 @@ React Components and hooks for interacting with metamask. Built with [metamask-t
 
 ## Table of contents
 
-### Functions
+### Hooks Functions
 
-- [MetamaskConnected](#metamaskconnected)
-- [MetamaskDisconnected](#metamaskdisconnected)
-- [MetamaskNotInstalled](#metamasknotinstalled)
-- [MetamaskProvider](#metamaskprovider)
 - [useAccount](#useaccount)
 - [useAccounts](#useaccounts)
 - [useChainId](#usechainid)
 - [useConnected](#useconnected)
 - [useMessage](#usemessage)
+- [useReloadOnChainChange](#usereloadonchainchange)
 
-## Functions
+### Other Functions
+
+- [MetamaskConnected](#metamaskconnected)
+- [MetamaskDisconnected](#metamaskdisconnected)
+- [MetamaskNotInstalled](#metamasknotinstalled)
+- [MetamaskProvider](#metamaskprovider)
+- [MetamaskWrongChain](#metamaskwrongchain)
+
+## Hooks Functions
+
+### useAccount
+
+▸ **useAccount**(): `string`
+
+Returns the current account
+
+**`Example`**
+
+```ts
+import { useAccount } from "@raydeck/usemetamask";
+const account = useAccount();
+```
+
+**`Export`**
+
+#### Returns
+
+`string`
+
+string
+
+___
+
+### useAccounts
+
+▸ **useAccounts**(): `string`[]
+
+Returns the current accounts
+
+**`Example`**
+
+```ts
+import { useAccounts } from "@raydeck/usemetamask";
+const accounts = useAccounts();
+```
+
+**`Export`**
+
+#### Returns
+
+`string`[]
+
+string[]
+
+___
+
+### useChainId
+
+▸ **useChainId**(): `string`
+
+**`Example`**
+
+```ts
+import { useChainId } from "@raydeck/usemetamask";
+const chainId = useChainId();
+```
+
+**`Export`**
+
+#### Returns
+
+`string`
+
+The current chain ID.
+
+___
+
+### useConnected
+
+▸ **useConnected**(): `boolean`
+
+Returns whether the wallet is connected to this site.
+
+**`Example`**
+
+```ts
+import { useConnected } from "@raydeck/usemetamask";
+const connected = useConnected();
+```
+
+**`Export`**
+
+#### Returns
+
+`boolean`
+
+boolean.
+
+___
+
+### useMessage
+
+▸ **useMessage**(): `ProviderMessage`
+
+Returns the current message
+
+**`Example`**
+
+```ts
+import { useMessage } from "@raydeck/usemetamask";
+const message = useMessage();
+```
+
+**`Export`**
+
+#### Returns
+
+`ProviderMessage`
+
+ProviderMessage
+
+___
+
+### useReloadOnChainChange
+
+▸ **useReloadOnChainChange**(): `void`
+
+Trigger a window reload when the chain changes. (best practice)
+
+**`Export`**
+
+**`Example`**
+
+```ts
+import { useChainChanged } from "@raydeck/usemetamask";
+useChainChanged();
+```
+
+#### Returns
+
+`void`
+
+___
+
+## Other Functions
 
 ### MetamaskConnected
 
@@ -35,7 +176,7 @@ React Components and hooks for interacting with metamask. Built with [metamask-t
 | Name | Type |
 | :------ | :------ |
 | `props` | `Object` |
-| `props.chainId?` | `string` |
+| `props.chainIds?` | `string`[] |
 | `props.children` | `ReactNode` |
 | `props.unconnected?` | `ReactNode` |
 | `context?` | `any` |
@@ -102,50 +243,20 @@ ___
 
 ___
 
-### useAccount
+### MetamaskWrongChain
 
-▸ **useAccount**(): `string`
+▸ **MetamaskWrongChain**(`props`, `context?`): ``null`` \| `ReactElement`<`any`, `any`\>
 
-#### Returns
+#### Parameters
 
-`string`
-
-___
-
-### useAccounts
-
-▸ **useAccounts**(): `string`[]
-
-#### Returns
-
-`string`[]
-
-___
-
-### useChainId
-
-▸ **useChainId**(): `string`
+| Name | Type |
+| :------ | :------ |
+| `props` | `Object` |
+| `props.chainIds?` | `string`[] |
+| `props.children` | `ReactNode` |
+| `props.unconnected?` | `ReactNode` |
+| `context?` | `any` |
 
 #### Returns
 
-`string`
-
-___
-
-### useConnected
-
-▸ **useConnected**(): `boolean`
-
-#### Returns
-
-`boolean`
-
-___
-
-### useMessage
-
-▸ **useMessage**(): `ProviderMessage`
-
-#### Returns
-
-`ProviderMessage`
+``null`` \| `ReactElement`<`any`, `any`\>
