@@ -6,9 +6,9 @@ React Components and hooks for interacting with metamask. Built with [metamask-t
 
 <a name="_librarymd"></a>
 
-@raydeck/usemetamask - v1.1.0
+@raydeck/usemetamask - v1.2.0
 
-# @raydeck/usemetamask - v1.1.0
+# @raydeck/usemetamask - v1.2.0
 
 ## Table of contents
 
@@ -25,6 +25,7 @@ React Components and hooks for interacting with metamask. Built with [metamask-t
 
 - [MetamaskConnected](#metamaskconnected)
 - [MetamaskDisconnected](#metamaskdisconnected)
+- [MetamaskInstalled](#metamaskinstalled)
 - [MetamaskNotInstalled](#metamasknotinstalled)
 - [MetamaskProvider](#metamaskprovider)
 - [MetamaskWrongChain](#metamaskwrongchain)
@@ -199,6 +200,24 @@ ___
 | `props.chainId?` | `string` |
 | `props.children` | `ReactNode` |
 | `props.connected?` | `ReactNode` |
+| `context?` | `any` |
+
+#### Returns
+
+``null`` \| `ReactElement`<`any`, `any`\>
+
+___
+
+### MetamaskInstalled
+
+▸ **MetamaskInstalled**(`props`, `context?`): ``null`` \| `ReactElement`<`any`, `any`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `props` | `Object` |
+| `props.children` | `ReactNode` |
 | `context?` | `any` |
 
 #### Returns
