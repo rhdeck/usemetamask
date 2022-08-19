@@ -116,3 +116,20 @@ export const MetamaskNotInstalled: FC<{ children: ReactNode }> = ({
     return <Fragment>{children}</Fragment>;
   }
 };
+/**
+ * @name MetamaskInstalled
+ * @description Renders if there is an ethereum member of window
+ * @returns {ReactNode}
+ * @category Components
+ * @export
+ */
+
+export const MetamaskInstalled: FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  if (isEthereum) {
+    return <Fragment>{children}</Fragment>;
+  } else {
+    return null;
+  }
+};
